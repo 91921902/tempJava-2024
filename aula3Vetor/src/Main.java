@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,9 +16,10 @@ public class Main {
 //
 //    Você pode escolher entre `perguntar ao usuário quantos salários serão digitados` ou `ler salários até que seja digitado um salário de zero reais`.
 //
+
         Scanner scanner = new Scanner(System.in);
-        float[] salarios = new float[100];
-        int numSalarios = 0;
+        float[] salarios = new float[100]; // Cria um vetor para armazenar até 100 salários
+        int numSalarios = 0; // Variável para controlar o número de salários digitados
         float maiorSalario = 0;
         float folhaAntiga = 0;
         float folhaCorrigida = 0;
@@ -30,8 +32,8 @@ public class Main {
                 break;
             }
 
-            salarios[numSalarios] = salario;
-            numSalarios++;
+            salarios[numSalarios] = salario; // Armazena o salário no vetor
+            numSalarios++; // Incrementa o contador de salários
 
             if (salario > maiorSalario) {
                 maiorSalario = salario;
@@ -59,8 +61,11 @@ public class Main {
         System.out.println("Total da folha de pagamento corrigida: R$" + folhaCorrigida);
 
         scanner.close();
+
+
+
+
+
+
     }
 }
-
-
-
