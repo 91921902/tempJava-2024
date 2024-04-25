@@ -1,5 +1,8 @@
 import org.w3c.dom.ls.LSOutput;
 
+//Crie um ArrayList de Pessoa com algumas pessoas genéricas aleatórias. Crie um método
+// que percorre esse ArrayList mostrando todas as infos de cada pessoa no terminal.
+
 import javax.swing.*;
 import java.util.ArrayList;
 
