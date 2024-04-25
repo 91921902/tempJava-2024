@@ -1,26 +1,3 @@
-import javax.swing.*;
-import java.util.Scanner;
-import java.util.Scanner;
-
-import java.util.Scanner;
-
-
-import java.util.Scanner;
-
-import java.util.Scanner;
-import javax.swing.*;
-import java.util.Scanner;
-
-import java.util.Scanner;
-
-import java.util.Scanner;
-import javax.swing.*;
-import java.util.Scanner;
-import javax.swing.*;
-import java.util.Scanner;
-import javax.swing.*;
-import java.util.Scanner;
-
 import java.util.Scanner;
 
 public class Main {
@@ -69,3 +46,4 @@ public class Main {
         scanner.close();
     }
 }
+
