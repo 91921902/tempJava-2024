@@ -28,32 +28,109 @@ public class TelaHomeCrud extends JFrame {
         btCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Loja l = new Loja (txtNome.getText(),txtCor.getText(), Integer.parseInt(txtNumero.getText()));
 
-                System.out.println(l.getNome()); /*mostra no terminal*/
-                System.out.println(l.getCor());
-                System.out.println(l.getNumeroSapato());
+                if (!txtNome.getText().isEmpty() && !txtCor.getText().isEmpty() && !txtNumero.getText().isEmpty()) {
+                    Loja l = new Loja(txtNome.getText(), txtCor.getText(), Integer.parseInt(txtNumero.getText()));
 
-                sapatos.add(l); /*coloca no vetor as infomações*/
+                    System.out.println(l.getNome()); /*mostra no terminal*/
+                    System.out.println(l.getCor());
+                    System.out.println(l.getNumeroSapato());
+
+                    sapatos.add(l); /*coloca no vetor as infomações*/
+                    System.out.println(sapatos);
+
+                    /* Limpa os campos de texto para os próximos cadastros*/
+                    txtNome.setText("");
+                    txtCor.setText("");
+                    txtNumero.setText("");
+
+                    JOptionPane.showMessageDialog(null, "Sapato cadastrado com sucesso!");
+                }else {
+
+
+
+                    JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
+                }
+
             }
         });
         btLocalizar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String nomeParaLocalizar = JOptionPane.showInputDialog("Digite o nome do sapato a ser localizado:");
+                        boolean encontrado = false; /*ja começa dizendo que não tem um nome a localizar ainda*/
+                        for (Loja sapato : sapatos) {
+                            if (sapato.getNome().equalsIgnoreCase(nomeParaLocalizar)) {
+                                JOptionPane.showMessageDialog(null, "Sapato encontrado: \nNome: " + sapato.getNome() + "\nCor: " + sapato.getCor() + "\nNúmero: " + sapato.getNumeroSapato());
+                                encontrado = true;/*se ouver noee troca para verdadeiro*/
+                                break;
+                            }
+                        }
 
+                        if (!encontrado) {
+                            JOptionPane.showMessageDialog(null, "Sapato não encontrado.");
+                        }
+                    }
+                });
 
-
-            }
-        });
         btEditar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String nomeParaEditar = JOptionPane.showInputDialog("Digite o nome do sapato a ser editado:");
+                boolean encontrado = false;
+
+                for (Loja sapato : sapatos) {
+
+                      /*equalsIgnoreCase poderá ser digitado maiusculo ou minusculo*/
+                    if (sapato.getNome().equalsIgnoreCase(nomeParaEditar)) {
+
+                        /* caso sapato encontrado:*/
+
+                        String novoNome = JOptionPane.showInputDialog("Digite o novo nome:");
+                        String novaCor = JOptionPane.showInputDialog("Digite a nova cor:");
+                        int novoNumero = Integer.parseInt(JOptionPane.showInputDialog("Digite o novo número do sapato:"));
+
+                        /*Atualiza os dados do sapato: */
+
+                        sapato.setNome(novoNome);
+                        sapato.setCor(novaCor);
+                        sapato.setNumeroSapato(novoNumero);
+
+                        JOptionPane.showMessageDialog(null, "Sapato editado com sucesso.");
+                        encontrado = true;
+                        break;
+                    }
+                }
+
+                if (!encontrado) {
+                    JOptionPane.showMessageDialog(null, "Sapato não encontrado.");
+                }
 
             }
         });
         btApagar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String nomeParaApagar = JOptionPane.showInputDialog("Digite o nome do sapato a ser apagado:");
+
+                boolean encontrado = false;
+
+                for (Loja sapato : sapatos) {
+                    if (sapato.getNome().equalsIgnoreCase(nomeParaApagar)) {
+
+                        /* Remove o sapato da lista*/
+
+                        sapatos.remove(sapato);
+                        JOptionPane.showMessageDialog(null, "Sapato apagado com sucesso.");
+
+                        encontrado = true;
+                        break;
+                    }
+                }
+
+                if (!encontrado) {
+                    JOptionPane.showMessageDialog(null, "Sapato não encontrado.");
+                }
 
             }
         });
@@ -61,12 +138,35 @@ public class TelaHomeCrud extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                /*Verifica se a lista de sapatos está vazia usando .isEmpty()*/
+
+                if (sapatos.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Nenhum sapato cadastrado.");
+                } else {
+                    StringBuilder mensagem = new StringBuilder();
+                    mensagem.append("Lista de sapatos cadastrados:\n\n");
+
+                    for (Loja sapato : sapatos) {
+                        mensagem.append("Nome: ").append(sapato.getNome()).append("\n");
+                        mensagem.append("Cor: ").append(sapato.getCor()).append("\n");
+                        mensagem.append("Número: ").append(sapato.getNumeroSapato()).append("\n\n");
+                    }
+
+                    JOptionPane.showMessageDialog(null, mensagem.toString());
+                }
+
             }
         });
         btFakes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                sapatos.add(new Loja("Sapato A", "Azul", 38));
+                sapatos.add(new Loja("Sapato B", "Preto", 42));
+                sapatos.add(new Loja("Sapato C", "Vermelho", 36));
 
+                // Exibe uma mensagem informando que os cadastros falsos foram adicionados
+                JOptionPane.showMessageDialog(null, "Cadastros falsos adicionados com sucesso!");
+                System.out.println(sapatos);
             }
         });
     }
