@@ -13,10 +13,9 @@ public class Main {
         pessoas.add(funcionario);
 
 
-
         System.out.println(pessoas.getFirst().getSenha());
-        System.out.println(aluno.getNome());
-        System.out.println(aluno.getCurso());
+        System.out.println("Nome do aluno: " +aluno.getNome());
+        System.out.println("Curso do aluno: " +aluno.getCurso());
         System.out.println(funcionario.getCargo());
 
         Professor professor = new Professor("Likas",2,"1357","Sistemas");
@@ -36,12 +35,12 @@ public class Main {
 
         System.out.println("=======================");
         for (Pessoa p : pessoas){
-            System.out.println(p.getNome());
-            System.out.println(p.getId());
-            System.out.println(p.getSenha());
+            System.out.println("Nome: " + p.getNome());
+            System.out.println("ID: " + p.getId());
+            System.out.println("Senha: " + p.getSenha());
 
 
-            if(p instanceof Aluno) {
+            if (p instanceof Aluno) {
                 Aluno a = (Aluno) p;
                 System.out.println(a.getCurso());
 
@@ -55,8 +54,10 @@ public class Main {
                 Funcionario func = (Funcionario) p;
                 System.out.println("Cargo: " + func.getCargo());
                 func.eventos();
+
             }if (p instanceof Estagiario) {
                 Estagiario estag = (Estagiario) p;
+
                 System.out.println("Estágio: " + estag.getEstagio());
                 estag.estagiando();
             }

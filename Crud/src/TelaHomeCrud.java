@@ -155,11 +155,5 @@ public class TelaHomeCrud extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new TelaHomeCrud();
-        frame.setContentPane(new TelaHomeCrud().painel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
+
 }

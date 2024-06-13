@@ -9,7 +9,7 @@ public class Estagiario extends Aluno{
 
 
     public void estagiando(){
-        System.out.println("Vou começar meu estagio Hoje");
+        System.out.println("Vou começar meu estagio hoje");
     }
 
     public String getEstagio() {
